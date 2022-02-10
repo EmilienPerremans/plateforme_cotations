@@ -1,0 +1,17 @@
+body
+{
+    background-image: url("../img/fond.jpg");
+    background-size: cover;
+}
+
+ol
+{
+    width: 35%;
+    text-align: justify;
+}
+
+#conteneur
+{
+    display: flex;
+    justify-content: space-around;
+}
