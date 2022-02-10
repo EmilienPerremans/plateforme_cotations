@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <script src="js/index.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="css/index.css" />
     <title>Cotations des élèves</title>
     <!--Head stuff here-->
@@ -15,10 +17,37 @@
     <li>Pour finir il sera possible de sauvegarder les données sur un excel, vous pourrez choisir ou le fichier devrat être placer</li>
 </ol>
 
-<div id="conteneur">
+<!-- <div id="conteneur">
     <div class="ficheEleve">Element</div>
     <div class="moyenneEleve">Test</div>
-</div>
+</div> -->
+
+<table id="tblExport">
+    <thead>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Note 1</th>
+        <th>Note 2</th>
+        <th>Note 3</th>
+        <th>Moyenne</th>
+        <th>Résultat</th>
+        <th>Commantaire du prof</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Séverin</td>
+        <td>Robert</td>
+        <td>10/20</td>
+        <td>10/30</td>
+        <td>15/30</td>
+        <td>54/100</td>
+        <td>Réussi</td>
+        <td>Travaille mieux !</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<button id="btnExport" onclick="fnExportToExcel('xlsx','myfirstsheet')" >Export to excel</button>
 
 </body>
 </html>
