@@ -1,9 +1,10 @@
 "use strict";
 
-function fnExportToExcel(fileExtension,fileName){
+function fnExportToExcel(fileExtension){
+    let name = document.getElementById('excelName').value;
     var el = document.getElementById("tblExport");
     var wb = XLSX.utils.table_to_book(el, { sheet: "sheet1" });
-    return XLSX.writeFile(wb, fileName+"."+fileExtension || ('MySheetName.' + (fileExtension || 'xlsx')));
+    return XLSX.writeFile(wb, name+"."+fileExtension || ('MySheetName.' + (fileExtension || 'xlsx')));
 }
 
 function add_pupil() {

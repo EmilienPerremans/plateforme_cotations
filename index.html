@@ -17,6 +17,12 @@
     <li>Pour finir il sera possible de sauvegarder les données sur un excel, vous pourrez choisir ou le fichier devrat être placer</li>
 </ol>
 
+<label for="excelName">Nom de l'excel : </label>
+<input id="excelName" type="text">
+
+<br>
+<br>
+
 <form action="#" onsubmit="add_pupil()">
     <label for="name">Nom : </label>
     <input id="name" type="text">
@@ -46,7 +52,7 @@
     </tbody>
 </table>
 <br>
-<button id="btnExport" onclick="fnExportToExcel('xlsx','myfirstsheet')" >Export to excel</button>
+<button id="btnExport" onclick="fnExportToExcel('xlsx')" >Export to excel</button>
 </body>
 
     <footer id="bas">
