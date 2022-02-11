@@ -17,6 +17,15 @@
     <li>Pour finir il sera possible de sauvegarder les données sur un excel, vous pourrez choisir ou le fichier devrat être placer</li>
 </ol>
 
+<form action="#" onsubmit="add_pupil()">
+    <label for="name">Nom : </label>
+    <input id="name" type="text">
+    <label for="firstname">Prénom : </label>
+    <input id="firstname" type="text">
+    <label for="grade">Notes (séparée par ';'): </label>
+    <input id="grade" type="text">
+    <button type="submit">Ajouter</button>
+</form>
 <!-- <div id="conteneur">
     <div class="ficheEleve">Element</div>
     <div class="moyenneEleve">Test</div>
@@ -33,17 +42,7 @@
         <th>Résultat</th>
         <th>Commantaire du prof</th>
     </thead>
-    <tbody>
-    <tr>
-        <td>Séverin</td>
-        <td>Robert</td>
-        <td>10/20</td>
-        <td>10/30</td>
-        <td>15/30</td>
-        <td>54/100</td>
-        <td>Réussi</td>
-        <td>Travaille mieux !</td>
-    </tr>
+    <tbody id="tbody">
     </tbody>
 </table>
 <br>
