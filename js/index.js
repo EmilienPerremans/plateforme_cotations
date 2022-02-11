@@ -1,4 +1,6 @@
 "use strict";
+let id = 0;
+
 
 function fnExportToExcel(fileExtension){
     let name = document.getElementById('excelName').value;
@@ -27,7 +29,7 @@ function add_pupil() {
     let grades = grade_form.split(";")
 
     // create the new line to put in the table
-    let tr = `<tr><td class='firstname'>${firstname}</td><td class='name'>${name}</td>`;
+    let tr = `<tr id='pupil${id}'><td class='firstname'>${firstname}</td><td class='name'>${name}</td>`;
     let denominator = 0;
     let numerator = 0;
     for(let grade of grades) {
@@ -38,8 +40,16 @@ function add_pupil() {
     }
     // calculate mean of grades for the pupil
     let mean = (numerator/denominator) * 100;
-    tr += `<td>${mean.toFixed(2)}/100</td><td>${mean>50 ? 'Réussi' : 'Raté'}</td><td>Travaille mieux !</td></tr>`;
+    tr += `<td>${mean.toFixed(2)}/100</td><td>${mean>50 ? 'Réussi' : 'Raté'}</td>
+    <td id='comment${id}' onclick="change_comment('comment${id}')">Cliquer pour changer le commentaire</td></tr>`;
 
     document.getElementById("tbody").innerHTML += tr;
+    id++;
     return 0;
+}
+
+// change comment for a pupil
+function change_comment(id) {
+    let new_comment = prompt('Indiquez le nouveau commentaire : ');
+    document.getElementById(id).innerText = new_comment;
 }
