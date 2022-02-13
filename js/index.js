@@ -4,8 +4,10 @@ let PUPILS = [];
 
 function fnExportToExcel(fileExtension){
     let name = document.getElementById('excelName').value;
+    create_table(false);
     var el = document.getElementById("tblExport");
     var wb = XLSX.utils.table_to_book(el, { sheet: "sheet1" });
+    create_table();
     return XLSX.writeFile(wb, name+"."+fileExtension || ('MySheetName.' + (fileExtension || 'xlsx')));
 }
 
@@ -45,14 +47,15 @@ function add_pupil() {
     return 0;
 }
 
-function create_table() {
+function create_table(for_html=true) {
     // create the thead
     let thead = "<thead id='thead'><th>Nom</th><th>Prénom</th>";
     for(let i in PUPILS[0].grades) {
         let num = Number(i)+1;
         thead += `<th>Note ${num}</th>`;
     }
-    thead += "<th>Moyenne</th><th>Résultat</th><th>Commentaire du prof</th><th>Supprimer la ligne</th></thead>";
+    thead += `<th>Moyenne</th><th>Résultat</th><th>Commentaire du prof</th>
+    ${for_html ? '<th>Supprimer la ligne</th>' : ''}</thead>`;
 
     // create the tbody
     let tbody = "<tbody id='tbody'>";
@@ -65,7 +68,7 @@ function create_table() {
         }
         tr += `<td>${PUPILS[index].mean.toFixed(2)}/100</td><td>${PUPILS[index].mean>50 ? 'Réussi' : 'Raté'}</td>
         <td id='comment${index}' onclick="change_cell('${index}', 'comment')">${PUPILS[index].comment}</td>
-        <td onclick="delete_pupil('${index}')">X</td></tr>`;
+        ${for_html ? `<td onclick="delete_pupil('${index}')">X</td>` : ''}</tr>`;
         tbody += tr;
     }
     tbody += "</tbody>";
