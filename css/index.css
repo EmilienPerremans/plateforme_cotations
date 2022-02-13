@@ -37,3 +37,11 @@ td, th /* Mettre une bordure sur les td ET les th */
     font-size:13px;
     color:#aaa;
 }
+
+#name,#firstname,#grade{
+    height:15px;
+    width:150px;
+    margin: 10px;
+
+}
+
