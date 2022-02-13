@@ -57,12 +57,14 @@ function create_table() {
     // create the tbody
     let tbody = "<tbody id='tbody'>";
     for(let index in PUPILS) {
-        let tr = `<tr id='pupil${index}'><td class='firstname'>${PUPILS[index].firstname}</td><td class='name'>${PUPILS[index].name}</td>`;
+        let tr = `<tr id='pupil${index}'>
+        <td id='firstname${index}' onclick="change_cell('${index}', 'firstname')">${PUPILS[index].firstname}</td>
+        <td id='name${index}' onclick="change_cell('${index}', 'name')">${PUPILS[index].name}</td>`;
         for(grade of PUPILS[index].grades) {
             tr += `<td>${grade}</td>`;
         }
         tr += `<td>${PUPILS[index].mean.toFixed(2)}/100</td><td>${PUPILS[index].mean>50 ? 'Réussi' : 'Raté'}</td>
-        <td id='comment${index}' onclick="change_comment('${index}')">${PUPILS[index].comment}</td>
+        <td id='comment${index}' onclick="change_cell('${index}', 'comment')">${PUPILS[index].comment}</td>
         <td onclick="delete_pupil('${index}')">X</td></tr>`;
         tbody += tr;
     }
@@ -89,9 +91,9 @@ function delete_pupil(index) {
     }
 }
 
-// change comment for a pupil
-function change_comment(index) {
-    let new_comment = prompt('Indiquez le nouveau commentaire : ');
-    document.getElementById(`comment${index}`).innerText = new_comment;
-    PUPILS[index].comment = new_comment;
+// change value of a cell
+function change_cell(index, cell) {
+    let new_value = prompt('Indiquez le nouvelle valeur : ');
+    document.getElementById(cell+index).innerText = new_value;
+    PUPILS[index][cell] = new_value;
 }
