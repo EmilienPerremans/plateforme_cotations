@@ -52,7 +52,7 @@ function create_table() {
         let num = Number(i)+1;
         thead += `<th>Note ${num}</th>`;
     }
-    thead += "<th>Moyenne</th><th>Résultat</th><th>Commentaire du prof</th><th>Supprimer la cote</th></thead>";
+    thead += "<th>Moyenne</th><th>Résultat</th><th>Commentaire du prof</th><th>Supprimer la ligne</th></thead>";
 
     // create the tbody
     let tbody = "<tbody id='tbody'>";

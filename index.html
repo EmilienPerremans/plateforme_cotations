@@ -18,38 +18,32 @@
 </ol>
 
 <label for="excelName">Nom de l'excel : </label>
-<input id="excelName" type="text">
+<input id="excelName" type="text" autofocus>
 
 <br>
 <br>
 
 <form action="#" onsubmit="add_pupil()">
     <label for="name">Nom : </label>
-    <input id="name" type="text">
+    <input id="name" type="text" required>
+    <br>
     <label for="firstname">Prénom : </label>
-    <input id="firstname" type="text">
+    <input id="firstname" type="text" required>
+    <br>
     <label for="grade">Notes (séparée par ';'): </label>
-    <input id="grade" type="text">
+    <input id="grade" type="text" required>
     <button type="submit">Ajouter</button>
 </form>
-<!-- <div id="conteneur">
-    <div class="ficheEleve">Element</div>
-    <div class="moyenneEleve">Test</div>
-</div> -->
 
 <table id="tblExport">
-    
-    
-    
-    
 </table>
 <br>
 <button id="btnExport" onclick="fnExportToExcel('xlsx')">Export to excel</button>
 <button onclick="delete_table()">Supprimer le tableau</button>
 </body>
 
-    <footer id="bas">
-        <p>Name creator Emilien & Séverin © 2022</p>
-    </footer>
+<footer id="bas">
+    <p>Name creator Emilien & Séverin © 2022</p>
+</footer>
 
 </html>
