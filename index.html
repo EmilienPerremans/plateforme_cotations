@@ -9,41 +9,36 @@
     <!--Head stuff here-->
 </head>
 <body>
-<ol>
-    <li>Ce site permet de pouvoir avoir vos moyennes de chauqes élève sur base de leurs côtes.</li>
-    <li>Veiller introduire le nom de la classe ensuite le nom des élèves, le nombre de côtes à introduire</li>
-    <li>Dans les case des cotes vous pouvez choisir la note de lévaluation et introduire la cote de lélève</li>
-    <li>Le site affichera si l'élève a réussi grace  à un code couleur rouge pour rater et vert pour réussi il vous seras aussi possible de mêtre un commantaire pour lélève </li>
-    <li>Pour finir il sera possible de sauvegarder les données sur un excel, vous pourrez choisir ou le fichier devrat être placer</li>
-</ol>
+<div id="conteneur">
+    <form action="#" onsubmit=" add_pupil()"  id="form" >
+        <label for="excelName">Nom de l'excel : </label>
+        <input id="excelName" type="text" autofocus>
+        <br>
 
-<label for="excelName">Nom de l'excel : </label>
-<input id="excelName" type="text" autofocus>
-
-<br>
-<br>
-
-<form action="#" onsubmit="add_pupil()">
-    <label for="name">Nom : </label>
-    <input id="name" type="text" required>
-    <br>
-    <label for="firstname">Prénom : </label>
-    <input id="firstname" type="text" required>
-    <br>
-    <label for="grade">Notes (séparée par ';'): </label>
-    <input id="grade" type="text" required>
-    <button type="submit">Ajouter</button>
-</form>
+        <label for="name">Nom : </label>
+        <input id="name" type="text" required>
+        <br>
+        <label for="firstname">Prénom : </label>
+        <input id="firstname" type="text" required>
+        <br>
+        <label for="grade">Notes (séparée par ';'): </label>
+        <input id="grade" type="text" required>
+        <button type="submit" id="ajout">Ajouter</button>
+    </form>
+</div>
 
 <table id="tblExport">
 </table>
-<br>
-<button id="btnExport" onclick="fnExportToExcel('xlsx')">Export to excel</button>
-<button onclick="delete_table()">Supprimer le tableau</button>
+
+<div id="bouton">
+    <div class="export"> <button id="btnExport" onclick="fnExportToExcel('xlsx')">Export to excel</button></div>
+
+    <div class="delet"></div> <button onclick="delete_table()">Supprimer le tableau</button></div>
+</div>
+
 </body>
 
 <footer id="bas">
     <p>Name creator Emilien & Séverin © 2022</p>
 </footer>
-
 </html>

@@ -4,22 +4,11 @@ body
     background-size: cover;
 }
 
-ol
-{
-    width: 35%;
-    text-align: justify;
-}
-
-#conteneur
-{
-    display: flex;
-    justify-content: space-around;
-}
-
 table
 {
     border-collapse: collapse;
 }
+
 td, th /* Mettre une bordure sur les td ET les th */
 {
     border: 1px solid black;
@@ -38,10 +27,28 @@ td, th /* Mettre une bordure sur les td ET les th */
     color:#aaa;
 }
 
-#name,#firstname,#grade{
+#name,#firstname,#grade,#excelName{
     height:15px;
     width:150px;
     margin: 10px;
-
 }
 
+#conteneur
+{
+    width: 350px;
+}
+
+#ajout
+{
+    position: absolute;
+}
+
+#bouton
+{
+    display: flex;
+    /*justify-content: center;*/
+}
+
+#form{
+    text-align: right;
+}

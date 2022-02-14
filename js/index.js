@@ -44,7 +44,7 @@ function add_pupil() {
     PUPILS.push(new_pupil);
 
     create_table();
-    return 0;
+    return false;
 }
 
 function create_table(for_html=true) {
@@ -63,7 +63,7 @@ function create_table(for_html=true) {
         let tr = `<tr id='pupil${index}'>
         <td id='firstname${index}' onclick="change_cell('${index}', 'firstname')">${PUPILS[index].firstname}</td>
         <td id='name${index}' onclick="change_cell('${index}', 'name')">${PUPILS[index].name}</td>`;
-        for(grade of PUPILS[index].grades) {
+        for(let grade of PUPILS[index].grades) {
             tr += `<td>${grade}</td>`;
         }
         tr += `<td>${PUPILS[index].mean.toFixed(2)}/100</td><td>${PUPILS[index].mean>50 ? 'Réussi' : 'Raté'}</td>
