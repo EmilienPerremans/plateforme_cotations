@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="conteneur">
-    <form action="#" onsubmit=" add_pupil()"  id="form" >
+    <form action="#" onsubmit="return add_pupil()"  id="form" >
         <label for="excelName">Nom de l'excel : </label>
         <input id="excelName" type="text" autofocus>
         <br>
@@ -23,7 +23,7 @@
         <br>
         <label for="grade">Notes (séparée par ';'): </label>
         <input id="grade" type="text" required>
-        <button type="submit" id="ajout">Ajouter</button>
+        <div class="ajout"><button class="favorite styled" type="submit" id="ajout">Ajouter</button></div>
     </form>
 </div>
 
@@ -31,9 +31,10 @@
 </table>
 
 <div id="bouton">
-    <div class="export"> <button id="btnExport" onclick="fnExportToExcel('xlsx')">Export to excel</button></div>
-
-    <div class="delet"></div> <button onclick="delete_table()">Supprimer le tableau</button></div>
+    <br>
+    <div class="export"> <button class="favorite styled" id="btnExport" onclick="fnExportToExcel('xlsx')">Export to excel</button></div>
+    <br>
+    <div class="delet"></div> <button class="favorite styled" onclick="delete_table()">Supprimer le tableau</button></div>
 </div>
 
 </body>
