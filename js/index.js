@@ -28,17 +28,9 @@ function add_pupil() {
     let grade_form = document.getElementById("grade").value;
     new_pupil.grades = grade_form.split(";");
 
-    // calculate mean of grades for the pupil
-    let denominator = 0;
-    let numerator = 0;
-    for(let grade of new_pupil.grades) {
-        if(grade !== "-") {
-            let splitted_grade = grade.split("/");
-            numerator += Number(splitted_grade[0]);
-            denominator += Number(splitted_grade[1]);
-        }
-    }
-    new_pupil.mean = (numerator/denominator) * 100;
+    
+    new_pupil.mean = calculate_mean(new_pupil.grades);
+    new_pupil.result = new_pupil.mean >= 50 ? 'Réussi' : 'Raté';
     new_pupil.comment = "Cliquer pour changer le commentaire";
 
     PUPILS.push(new_pupil);
@@ -47,9 +39,23 @@ function add_pupil() {
     return false;
 }
 
+function calculate_mean(grades) {
+    // calculate mean of grades for the pupil
+    let denominator = 0;
+    let numerator = 0;
+    for(let grade of grades) {
+        if(grade !== "-") {
+            let splitted_grade = grade.split("/");
+            numerator += Number(splitted_grade[0]);
+            denominator += Number(splitted_grade[1]);
+        }
+    }
+    return ((numerator/denominator) * 100).toFixed(2);
+}
+
 function create_table(for_html=true) {
     // create the thead
-    let thead = "<thead id='thead'><th>Nom</th><th>Prénom</th>";
+    let thead = "<thead id='thead'><th>Prénom</th><th>Nom</th>";
     for(let i in PUPILS[0].grades) {
         let num = Number(i)+1;
         thead += `<th>Note ${num}</th>`;
@@ -61,14 +67,15 @@ function create_table(for_html=true) {
     let tbody = "<tbody id='tbody'>";
     for(let index in PUPILS) {
         let tr = `<tr id='pupil${index}'>
-        <td id='firstname${index}' onclick="change_cell('${index}', 'firstname')">${PUPILS[index].firstname}</td>
-        <td id='name${index}' onclick="change_cell('${index}', 'name')">${PUPILS[index].name}</td>`;
-        for(let grade of PUPILS[index].grades) {
-            tr += `<td>${grade}</td>`;
+        <td id='firstname${index}' onclick="change_cell('${index}', 'firstname')" class='clickable' title='Cliquer pour changer le prénom'>${PUPILS[index].firstname}</td>
+        <td id='name${index}' onclick="change_cell('${index}', 'name')" class='clickable' title='Cliquer pour changer le nom'>${PUPILS[index].name}</td>`;
+        for(let index_grade in PUPILS[index].grades) {
+            tr += `<td id='grade${index_grade}' onclick="change_grade(${index},${index_grade})"
+            class='clickable' title='Cliquer pour changer la cote'>${PUPILS[index].grades[index_grade]}</td>`;
         }
-        tr += `<td>${PUPILS[index].mean.toFixed(2)}/100</td><td>${PUPILS[index].mean>50 ? 'Réussi' : 'Raté'}</td>
-        <td id='comment${index}' onclick="change_cell('${index}', 'comment')">${PUPILS[index].comment}</td>
-        ${for_html ? `<td onclick="delete_pupil('${index}')">X</td>` : ''}</tr>`;
+        tr += `<td id='mean${index}'>${PUPILS[index].mean}/100</td><td id='result${index}'>${PUPILS[index].result}</td>
+        <td id='comment${index}' onclick="change_cell('${index}', 'comment')" class='clickable' title='Cliquer pour changer le commentaire'>${PUPILS[index].comment}</td>
+        ${for_html ? `<td onclick="delete_pupil('${index}')" class='clickable' title='Cliquer pour supprimer la ligne'>X</td>` : ''}</tr>`;
         tbody += tr;
     }
     tbody += "</tbody>";
@@ -94,9 +101,25 @@ function delete_pupil(index) {
     }
 }
 
+function change_grade(index_pupil, index_grade) {
+    let new_value = prompt('Indiquez la nouvelle valeur : ');
+    if( (new_value.split('/').length == 2 && !isNaN(new_value.split('/')[0]) && !isNaN(new_value.split('/')[0])) || new_value == '-' ) {
+        let pupil = PUPILS[index_pupil]
+        pupil.grades[index_grade] = new_value;
+        pupil.mean = calculate_mean(pupil.grades);
+        pupil.result = pupil.mean >= 50 ? 'Réussi' : 'Raté';
+    
+        document.getElementById(`grade${index_grade}`).innerHTML = pupil.grades[index_grade];
+        document.getElementById(`mean${index_pupil}`).innerHTML = pupil.mean;
+        document.getElementById(`result${index_pupil}`).innerHTML = pupil.result;
+    } else {
+        alert(`Syntaxe de la cote '${new_value}' est mauvaise, exemple de syntaxe: '13/20'`);
+    }
+}
+
 // change value of a cell
 function change_cell(index, cell) {
-    let new_value = prompt('Indiquez le nouvelle valeur : ');
+    let new_value = prompt('Indiquez la nouvelle valeur : ');
     document.getElementById(cell+index).innerText = new_value;
     PUPILS[index][cell] = new_value;
 }
