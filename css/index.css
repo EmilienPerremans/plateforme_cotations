@@ -74,3 +74,4 @@ td, th /* Mettre une bordure sur les td ET les th */
     cursor: pointer;
 }
 
+th{font-style: italic}
