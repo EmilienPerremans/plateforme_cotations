@@ -1,0 +1,28 @@
+td, th
+{
+    border: 1px solid black;
+    text-align: center;
+}
+#form
+{
+    text-align: center;
+}
+
+#tblExport
+{
+    position: center;
+    text-align: center;
+}
+
+table
+{
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th
+{
+    font-size: 2rem;
+    font-style: italic;
+    padding: 1rem;
+}

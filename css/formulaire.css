@@ -1,0 +1,16 @@
+#name,#firstname,#grade,#excelName
+{
+    height:15px;
+    width:150px;
+    margin: 10px;
+}
+
+#conteneur
+{
+    width: 350px;
+}
+
+#form
+{
+    text-align: center;
+}
