@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8" />
     <script src="js/index.js"></script>
@@ -9,36 +9,46 @@
     <link rel="stylesheet" href="css/tableau.css" />
     <link rel="stylesheet" href="css/corps.css" />
     <title>Cotations des élèves</title>
+    <link rel="icon" href="img/sese.jpg" />
     <!--Head stuff here-->
 </head>
 <body>
-<!--<div id="conteneur">-->
-    <form action="#" onsubmit="return add_pupil()"  id="form" >
-        <label for="excelName">Nom de l'excel : </label>
-        <input id="excelName" type="text" autofocus value="Excel">
-        <br>
-        <label for="firstname">Prénom : </label>
-        <input id="firstname" type="text" required value="Séverin">
-        <br>
-        <label for="name">Nom : </label>
-        <input id="name" type="text" required value="Robert">
-        <br>
-        <label for="grade">Notes (séparée par ';'): </label>
-        <input id="grade" type="text" required value="10/20;18/30;15/60">
-        <div class="ajout"><button class="favorite styled" type="submit" id="ajout">Ajouter</button></div>
-    </form>
-<!--</div>-->
 
-<table id="tblExport">
-</table>
+<div id="page">
 
-<div id="bouton">
-    <br>
-    <div class="export"> <button class="favorite styled" id="btnExport" onclick="fnExportToExcel('xlsx')">Export to excel</button></div>
-    <br>
-    <div class="delet"></div> <button class="favorite styled" onclick="delete_table()">Supprimer le tableau</button></div>
+    <div id="conteneur">
+        <fieldset>
+            <legend><h3>Ajout d'un élvève</h3></legend>
+            <form action="#" onsubmit="return add_pupil()"  id="form" >
+                <label for="excelName">Nom de l'excel : </label>
+                <input id="excelName" type="text" autofocus value="Excel">
+                <br>
+                <label for="firstname">Prénom : </label>
+                <input id="firstname" type="text" required value="Séverin">
+                <br>
+                <label for="name">Nom : </label>
+                <input id="name" type="text" required value="Séverin">
+                <br>
+                <label for="grade">Notes : </label>
+                <input id="grade" type="text" required value="10/20;18/30;15/60">
+                <div class="ajout"><button class="favorite styled" type="submit" id="ajout">Ajouter</button></div>
+            </form>
+        </fieldset>
+    </div>
+
+    <div id="tableau">
+        <fieldset>
+            <legend><h3>tableau ou les côtes sont afficher</h3></legend>
+            <table id="tblExport">
+            </table>
+
+            <div id="bouton">
+                <div class="export"> <button class="styled" id="btnExport" onclick="fnExportToExcel('xlsx')">Export to excel</button></div>
+                <div class="delet"></div> <button class="favorite" id="supprimer" onclick="delete_table()">Supprimer le tableau</button></div>
+    </div>
+    </fieldset>
 </div>
-
+</div>
 </body>
 
 <footer id="bas">

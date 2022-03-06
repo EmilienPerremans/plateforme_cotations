@@ -1,15 +1,11 @@
 body
 {
-    text-align: center;
-    background-image: url("../img/html-color-codes-color-tutorials-hero.jpg");
-    background-size: cover;
+    background-color: snow;
+    /*background-image: url("../img/html-color-codes-color-tutorials-hero.jpg");*/
+    /*background-size: cover;*/
     font-family: "proxima-soft", "Proxima Soft", "Proxima Nova Soft", Helvetica, Arial, sans-serif;
 }
 
-table
-{
-    text-align: center;
-}
 
 #bas
 {
@@ -19,5 +15,9 @@ table
     right: 0;
     text-align:center;
     font-size:13px;
-    color: black;;
+    color: black;
+}
+
+#page{
+    display: flex;
 }

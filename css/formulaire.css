@@ -1,16 +1,25 @@
 #name,#firstname,#grade,#excelName
 {
     height:15px;
-    width:150px;
+    width:auto;
     margin: 10px;
+    scroll-behavior: auto;
+    text-align: left;
+    border-radius: 2px;
+}
+
+#name:hover,#firstname:hover,#grade:hover,#excelName:hover{
+    background-color:#FFE08B ;
+    font-family: "proxima-soft", "Proxima Soft", "Proxima Nova Soft", Helvetica, Arial, sans-serif;
 }
 
 #conteneur
 {
-    width: 350px;
+    width: auto;
+    display: flex;
 }
 
 #form
 {
-    text-align: center;
+    text-align: right;
 }
